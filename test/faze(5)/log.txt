@@ -1,0 +1,5 @@
+INFO User logged in
+ERROR Invalid password
+INFO Page opened
+WARNING Low memory
+ERROR Connection lost
