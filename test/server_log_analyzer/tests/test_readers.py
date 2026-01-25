@@ -1,12 +1,9 @@
-import unittest
+import pytest
 from test.server_log_analyzer.readers.file_reader import FileReader
 
 
-class TestFileReader(unittest.TestCase):
+def test_file_reader_raises_if_missing():
+    reader = FileReader("server.log")
 
-    def test_file_not_found(self):
-        reader = FileReader("file_does_not_exist.txt")
-
-        with self.assertRaises(FileNotFoundError):
-            reader.read_lines()
-            
+    with pytest.raises(FileNotFoundError):
+        reader.read_lines()
