@@ -9,5 +9,4 @@ class TestFileReader(unittest.TestCase):
 
         with self.assertRaises(FileNotFoundError):
             reader.read_lines()
-
-            "https://github.com/DimaIslyamov/pythonProject-analyzer-.git"
+            
