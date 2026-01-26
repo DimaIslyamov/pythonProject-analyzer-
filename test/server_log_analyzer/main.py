@@ -1,6 +1,6 @@
 from test.server_log_analyzer.readers.file_reader import FileReader
 from test.server_log_analyzer.analyzers.server_log_analyzer import ServerLogAnalyzer
-from run import run
+from test.server_log_analyzer.core.run import run
 
 
 def main():

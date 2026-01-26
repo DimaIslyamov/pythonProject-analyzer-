@@ -4,36 +4,48 @@ from test.server_log_analyzer.analyzers.server_log_analyzer import ServerLogAnal
 from test.server_log_analyzer.analyzers.simple_log_analyzer import SimpleLogAnalyzer
 
 
-def test_simple_log_analyzer_counts_non_empty_lines():
-    lines = ["one", "two", "", "three"]
+def test_simple_log_analyzer_counts_non_empty_lines(simple_analyzer):
+    simple_analyzer.analyze()
+    assert simple_analyzer.stats["total"] == 6
 
-    reader = ListReader(lines)
-    analyzer = SimpleLogAnalyzer(reader)
+    # lines = ["one", "two", "", "three"]
+#
+#     reader = ListReader(lines)
+#     analyzer = SimpleLogAnalyzer(reader)
+#
+#     analyzer.read()
+#     analyzer.analyze()
+#
+#     assert analyzer.stats["total"] == 3
 
-    analyzer.read()
-    analyzer.analyze()
 
-    assert analyzer.stats["total"] == 3
+def test_server_log_analyzer_counts_levels(server_analyzer):
+    server_analyzer.analyze()
+
+    assert server_analyzer.stats["INFO"] == 2
+    assert server_analyzer.stats["ERROR"] == 2
+    assert server_analyzer.stats["WARNING"] == 1
+    assert server_analyzer.stats["total"] == 5
 
 
-def test_server_log_analyzer_counts_levels():
-    lines = [
-        "2024-01-01 INFO Test",
-        "2024-01-02 ERROR Fail",
-        "",
-        "invalid"
-    ]
 
-    reader = ListReader(lines)
-    analyzer = ServerLogAnalyzer(reader)
-
-    analyzer.read()
-    analyzer.analyze()
-
-    assert analyzer.stats["INFO"] == 1
-    assert analyzer.stats["ERROR"] == 1
-    assert analyzer.stats["WARNING"] == 0
-    assert analyzer.stats["total"] == 2
+    # lines = [
+#         "2024-01-01 INFO Test",
+#         "2024-01-02 ERROR Fail",
+#         "",
+#         "invalid"
+#     ]
+#
+#     reader = ListReader(lines)
+#     analyzer = ServerLogAnalyzer(reader)
+#
+#     analyzer.read()
+#     analyzer.analyze()
+#
+#     assert analyzer.stats["INFO"] == 1
+#     assert analyzer.stats["ERROR"] == 1
+#     assert analyzer.stats["WARNING"] == 0
+#     assert analyzer.stats["total"] == 2
 
 
 

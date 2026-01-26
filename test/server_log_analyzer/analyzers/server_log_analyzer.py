@@ -2,14 +2,14 @@ from test.server_log_analyzer.readers.list_reader import ListReader
 from test.server_log_analyzer.analyzers.base_log_analyzer import BaseLogAnalyzer
 from test.server_log_analyzer.readers.file_reader import Reader
 from test.server_log_analyzer.analyzers.simple_log_analyzer import SimpleLogAnalyzer
-from test.server_log_analyzer.others.run import run
+from test.server_log_analyzer.core.run import run
 
 LOG_LEVELS = ("INFO", "ERROR", "WARNING")
 
 
 class ServerLogAnalyzer(BaseLogAnalyzer):
-    def __init__(self, reader: Reader):
-        super().__init__(reader)
+    def __init__(self, read: Reader):
+        super().__init__(read)
 
 
         for level in LOG_LEVELS:

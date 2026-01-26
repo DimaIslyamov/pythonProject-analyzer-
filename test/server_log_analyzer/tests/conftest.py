@@ -11,6 +11,11 @@ def raw_lines():
         "2024-01-02 ERROR Fail",
         "",
         "invalid line",
+        "2024-01-01 INFO User logged in",
+        "2024-01-01 ERROR Invalid password",
+        "2024-01-02 WARNING Low memory"
+        "123 23124 6t31 12",
+
     ]
 
 
