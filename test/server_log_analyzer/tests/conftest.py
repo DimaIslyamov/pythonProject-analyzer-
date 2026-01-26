@@ -25,14 +25,24 @@ def list_reader(raw_lines):
 
 
 @pytest.fixture
-def simple_analyzer(list_reader):
-    analyzer = SimpleLogAnalyzer(list_reader)
-    analyzer.read()
-    return analyzer
+def simple_analyzer_factory():
+
+    def _factory(lines: list[str]):
+        reader = ListReader(lines)
+        analyzer = SimpleLogAnalyzer(reader)
+        analyzer.read()
+        return analyzer
+
+    return _factory
 
 
 @pytest.fixture
-def server_analyzer(list_reader):
-    analyzer = ServerLogAnalyzer(list_reader)
-    analyzer.read()
-    return analyzer
+def server_analyzer_factory():
+
+    def _factory(lines: list[str]):
+        reader = ListReader(lines)
+        analyzer = ServerLogAnalyzer(reader)
+        analyzer.read()
+        return analyzer
+
+    return _factory

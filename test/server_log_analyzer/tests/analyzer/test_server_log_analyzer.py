@@ -1,6 +1,6 @@
 import pytest
-from test.server_log_analyzer.readers.list_reader import ListReader
-from test.server_log_analyzer.analyzers.server_log_analyzer import ServerLogAnalyzer
+#from test.server_log_analyzer.readers.list_reader import ListReader
+#from test.server_log_analyzer.analyzers.server_log_analyzer import ServerLogAnalyzer
 
 
 @pytest.mark.parametrize(
@@ -29,11 +29,8 @@ from test.server_log_analyzer.analyzers.server_log_analyzer import ServerLogAnal
 )
 
 
-def test_server_log_analyzer_parametrized(lines, expected):
-    reader = ListReader(lines)
-    analyzer = ServerLogAnalyzer(reader)
-
-    analyzer.read()
+def test_server_log_analyzer_parametrized(lines, expected, server_analyzer_factory):
+    analyzer = server_analyzer_factory(lines)
     analyzer.analyze()
 
     for key, value in expected.items():

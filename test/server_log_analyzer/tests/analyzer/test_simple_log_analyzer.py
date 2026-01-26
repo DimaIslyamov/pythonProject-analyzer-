@@ -1,6 +1,6 @@
 import pytest
-from test.server_log_analyzer.readers.list_reader import ListReader
-from test.server_log_analyzer.analyzers.simple_log_analyzer import SimpleLogAnalyzer
+#from test.server_log_analyzer.readers.list_reader import ListReader
+#from test.server_log_analyzer.analyzers.simple_log_analyzer import SimpleLogAnalyzer
 
 
 @pytest.mark.parametrize(
@@ -15,11 +15,8 @@ from test.server_log_analyzer.analyzers.simple_log_analyzer import SimpleLogAnal
 )
 
 
-def test_simple_log_analyzer_counts_non_empty_lines(lines, expected_total):
-    reader = ListReader(lines)
-    analyzer = SimpleLogAnalyzer(reader)
-
-    analyzer.read()
+def test_simple_log_analyzer_counts_non_empty_lines(lines, expected_total, simple_analyzer_factory):
+    analyzer = simple_analyzer_factory(lines)
     analyzer.analyze()
 
     assert analyzer.stats["total"] == expected_total
