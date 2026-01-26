@@ -1,12 +1,15 @@
+
+# ЛОГИКА ПЕРЕНЕСЕНА В ОТДЕЛНЫЕ ФАЙЛЫ (ОСТАВИЛ ЕГО ДЛЯ СЕБЯ)
+
 #import unittest
 from test.server_log_analyzer.readers.list_reader import ListReader
 from test.server_log_analyzer.analyzers.server_log_analyzer import ServerLogAnalyzer
 from test.server_log_analyzer.analyzers.simple_log_analyzer import SimpleLogAnalyzer
 
 
-def test_simple_log_analyzer_counts_non_empty_lines(simple_analyzer):
-    simple_analyzer.analyze()
-    assert simple_analyzer.stats["total"] == 6
+#  def test_simple_log_analyzer_counts_non_empty_lines(simple_analyzer):
+#     simple_analyzer.analyze()
+#     assert simple_analyzer.stats["total"] == 6
 
     # lines = ["one", "two", "", "three"]
 #
@@ -19,13 +22,13 @@ def test_simple_log_analyzer_counts_non_empty_lines(simple_analyzer):
 #     assert analyzer.stats["total"] == 3
 
 
-def test_server_log_analyzer_counts_levels(server_analyzer):
-    server_analyzer.analyze()
-
-    assert server_analyzer.stats["INFO"] == 2
-    assert server_analyzer.stats["ERROR"] == 2
-    assert server_analyzer.stats["WARNING"] == 1
-    assert server_analyzer.stats["total"] == 5
+# def test_server_log_analyzer_counts_levels(server_analyzer):
+#     server_analyzer.analyze()
+#
+#     assert server_analyzer.stats["INFO"] == 2
+#     assert server_analyzer.stats["ERROR"] == 2
+#     assert server_analyzer.stats["WARNING"] == 1
+#     assert server_analyzer.stats["total"] == 5
 
 
 
